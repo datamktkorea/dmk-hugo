@@ -1,64 +1,95 @@
 name: Deploy Hugo site to GitHub Pages
+# 워크플로우 이름 (Actions 탭에 표시됨)
 
 on:
   push:
     branches:
-      - master
+      - main
+      # main 브랜치에 push 될 때마다 자동 실행
 
 permissions:
   contents: read
   pages: write
   id-token: write
+  # GitHub Pages 배포에 필요한 최소 권한 세트
+  # pages: write → Pages에 배포
+  # id-token: write → OIDC 인증용 (공식 Pages 액션 필수)
 
 concurrency:
   group: "pages"
   cancel-in-progress: false
+  # Pages 배포는 한 번에 하나만 실행
+  # 이전 배포가 돌고 있으면 기다렸다가 실행
 
 defaults:
   run:
     shell: bash
+    # 모든 run step에서 bash 사용
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    # 빌드용 Job (정적 파일 생성)
+
     env:
       HUGO_VERSION: 0.155.2
+      # 사용할 Hugo 버전 명시 (재현성 확보)
+
     steps:
       - name: Install Hugo CLI
         run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          # Hugo Extended 버전 다운로드 (SCSS/SASS 처리 가능)
+          wget -O ${{ runner.temp }}/hugo.deb \
+            https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
           && sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
       - name: Checkout
         uses: actions/checkout@v4
+        # 현재 레포지토리 코드 가져오기
 
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        # GitHub Pages 환경 설정
+        # 이후 steps.pages.outputs.base_url 로 Pages URL 참조 가능
 
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          # Hugo 캐시 디렉토리 (빌드 속도 개선)
           HUGO_ENVIRONMENT: production
+          # Hugo 환경을 production으로 설정
           TZ: Asia/Seoul
+          # 빌드 시 타임존 명시 (date 관련 이슈 방지)
+
         run: |
           hugo \
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+          # --gc      : 사용하지 않는 리소스 정리
+          # --minify  : HTML/CSS/JS 압축
+          # --baseURL : GitHub Pages 실제 URL로 강제 설정
+          #             (상대경로 깨짐 방지 핵심 옵션)
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
+          # Hugo 빌드 결과물 (public 폴더)를 Pages 배포용 아티팩트로 업로드
 
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      # GitHub 환경(Environment)에 배포 URL 표시
+
     runs-on: ubuntu-latest
     needs: build
+    # build Job이 성공해야 실행됨
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        # 업로드된 artifact를 실제 GitHub Pages로 배포
