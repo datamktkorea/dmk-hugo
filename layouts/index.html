@@ -1,0 +1,106 @@
+{{ define "main" }}
+  {{ partial "hero.html" . }}
+  {{ partial "filterbar.html" . }}
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="search-result-text" class="mb-8 text-gray-500 dark:text-gray-400 text-lg hidden">
+      '<span id="search-query-display" class="font-bold text-gray-900 dark:text-gray-100"></span>' 검색 결과
+    </div>
+
+    <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+      {{ range where .Site.RegularPages "Section" "posts" }}
+        {{ partial "blogcard.html" . }}
+      {{ end }}
+    </div>
+
+    <div id="no-results" class="hidden col-span-full text-center py-20">
+      <div class="text-gray-400 dark:text-gray-500 text-lg mb-2">검색 결과가 없습니다.</div>
+      <p class="text-gray-500 dark:text-gray-600">다른 키워드로 검색해보세요.</p>
+    </div>
+  </div>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+  let currentTag = 'all';
+  let currentSearch = '';
+
+  function toggleSearch() {
+    const def = document.getElementById('header-default');
+    const search = document.getElementById('header-search');
+    const input = document.getElementById('search-input');
+    if (search.classList.contains('hidden')) {
+      def.classList.add('hidden');
+      search.classList.remove('hidden');
+      search.classList.add('flex');
+      input.focus();
+    } else {
+      search.classList.add('hidden');
+      search.classList.remove('flex');
+      def.classList.remove('hidden');
+      input.value = '';
+      currentSearch = '';
+      applyFilters();
+    }
+  }
+
+  function handleSearch(query) {
+    currentSearch = query.toLowerCase();
+    applyFilters();
+  }
+
+  function filterByTag(tag) {
+    currentTag = tag;
+    // Update button styles
+    document.querySelectorAll('.tag-btn').forEach(btn => {
+      if (btn.dataset.tag === tag) {
+        btn.className = 'tag-btn tag-active whitespace-nowrap px-4 py-2.5 rounded-md text-[15px] font-medium transition-all duration-200 border bg-primary border-primary text-white hover:bg-primary-hover shadow-sm';
+      } else {
+        btn.className = 'tag-btn tag-inactive whitespace-nowrap px-4 py-2.5 rounded-md text-[15px] font-medium transition-all duration-200 border bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600';
+      }
+    });
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const cards = document.querySelectorAll('.blog-card');
+    let visibleCount = 0;
+
+    // Search result text
+    const searchText = document.getElementById('search-result-text');
+    const searchDisplay = document.getElementById('search-query-display');
+    if (currentSearch) {
+      searchDisplay.textContent = currentSearch;
+      searchText.classList.remove('hidden');
+    } else {
+      searchText.classList.add('hidden');
+    }
+
+    cards.forEach(card => {
+      const tags = card.dataset.tags.toLowerCase().split(',');
+      const title = card.dataset.title.toLowerCase();
+      const content = card.dataset.content.toLowerCase();
+
+      let tagMatch = currentTag === 'all' || tags.includes(currentTag.toLowerCase());
+      let searchMatch = !currentSearch || title.includes(currentSearch) || content.includes(currentSearch);
+
+      if (tagMatch && searchMatch) {
+        card.style.display = '';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    const noResults = document.getElementById('no-results');
+    const grid = document.getElementById('posts-grid');
+    if (visibleCount === 0) {
+      noResults.classList.remove('hidden');
+      grid.classList.add('hidden');
+    } else {
+      noResults.classList.add('hidden');
+      grid.classList.remove('hidden');
+    }
+  }
+</script>
+{{ end }}

@@ -1,0 +1,13 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'ko-kr'
+title = 'DMK Tech Blog'
+
+[params]
+  subtitle = '데이터마케팅코리아의 개발팀의 기록 일지'
+  logoUrl = '/images/dmk-logo.png'
+
+[taxonomies]
+  tag = 'tags'
+
+[markup.goldmark.renderer]
+  unsafe = true
