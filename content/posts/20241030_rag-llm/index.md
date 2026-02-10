@@ -70,7 +70,7 @@ graph TD
 
 1. **문서(PDF, DOCX 등) 준비**
 
-    <img src="1_pdf_example.png" class="plain" style="max-width: 250px; width: 100%;">
+    <img src="1_pdf_example.png" class="plain invertable" style="max-width: 250px; width: 100%;">
     
 2. **문서에서 텍스트 추출**
     ```
@@ -94,7 +94,7 @@ graph TD
     
 5. **벡터 DB에 저장**
     
-    <img src="3_vectordb_example.png" class="plain" style="max-width: 250px; width: 100%;">
+    <img src="3_vectordb_example.png" class="plain invertable" style="max-width: 250px; width: 100%;">
     
 
 ## **B) RETRIEVAL: 검색**
