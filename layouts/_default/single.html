@@ -14,11 +14,15 @@
   <time class="text-gray-400 dark:text-gray-500 text-sm">{{ .Date.Format "2006. 01. 02" }}</time>
 
   <!-- Featured image -->
-  {{ with .Params.image }}
+  {{ with .Resources.GetMatch .Params.image }}
+  <div class="mt-8 rounded-2xl overflow-hidden">
+    <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="w-full object-cover">
+  </div>
+  {{ else }}{{ with .Params.image }}
   <div class="mt-8 rounded-2xl overflow-hidden">
     <img src="{{ . }}" alt="{{ $.Title }}" class="w-full object-cover">
   </div>
-  {{ end }}
+  {{ end }}{{ end }}
 
   <!-- Content -->
   <div class="mt-10 prose prose-sm dark:prose-invert max-w-none

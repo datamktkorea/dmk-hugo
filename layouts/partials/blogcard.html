@@ -4,9 +4,12 @@
     <!-- Image -->
     <div class="relative overflow-hidden aspect-[1.6/1] bg-gray-100 dark:bg-gray-800">
       <div class="absolute inset-0 bg-gray-200 dark:bg-gray-700 animate-pulse group-hover:hidden"></div>
-      {{ with .Params.image }}
+      {{ $img := .Params.image }}
+      {{ with .Resources.GetMatch .Params.image }}
+      <img src="{{ .RelPermalink }}" alt="{{ $.Title }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105" loading="lazy">
+      {{ else }}{{ with $img }}
       <img src="{{ . }}" alt="{{ $.Title }}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105" loading="lazy">
-      {{ end }}
+      {{ end }}{{ end }}
       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
     </div>
     <!-- Content -->

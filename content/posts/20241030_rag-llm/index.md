@@ -1,19 +1,19 @@
 +++
 title = '기존 LLM의 문제점과 RAG(Retrieval Augmented Generation)'
-date = 2025-02-20
+date = 2024-10-30
 draft = false
 tags = ['RAG', 'LLM']
-image = 'https://www.hyro.ai/wp-content/uploads/2023/07/RAG.png'
+image = '0_main.png'
 +++
 
-# 👻**기존 LLM의 문제점**
+# 👻 **기존 LLM의 문제점**
 
 <aside>
-<b>🌱LLM이란?</b>
+<b>🌱 LLM이란?</b>
 
-✧ Large Language Model
-✧ 방대한 양의 데이터로 사전 학습된 딥러닝 모델 → 자연어 등의 데이터 이해 및 생성
-✧ ex) OpenAI의 GPT, Google의 Gemini, Meta의 LLaMa
+* Large Language Model
+* 방대한 양의 데이터로 사전 학습된 딥러닝 모델 → 자연어 등의 데이터 이해 및 생성
+* ex) OpenAI의 GPT, Google의 Gemini, Meta의 LLaMa
 
 </aside>
 
@@ -21,20 +21,20 @@ image = 'https://www.hyro.ai/wp-content/uploads/2023/07/RAG.png'
 - 신뢰할 수 없는 출처로부터 응답 생성
 - 용어 혼동으로 인한 부정확한 응답
 
-# 💡**RAG (Retrieval Augmented Generation)**
+# 💡 **RAG (Retrieval Augmented Generation)**
 
 - LLM을 리디렉션하여 신뢰할 수 있는 출처에서 관련 정보를 검색
 - **검색 (Retrieval)** : 사용자 질문을 외부 문서에서 검색
 - **증강 (Augmentation)** : 검색된 자료들이 모델에 전달되어 모델이 추가적인 배경 지식 습득
 - **생성 (Generation)** : 입력된 질문과 증강된 정보를 바탕으로 최종 답변 생성
 
-# 🍭**RAG의 이점**
+# 🍭 **RAG의 이점**
 
 - **비용 효율성** : 기존 모델을 따로 훈련할 필요 없이 새로운 데이터 적용
 - **사용자 신뢰 강화 및 최신 정보 제공** : 명확한 출처로부터 가져오는 최신 정보
 - **개발자 제어 강화** : 정보 소스와 접근 권한을 직접 관리하여 유연하게 조정
 
-# 🛠️**일반적인 RAG 진행 과정**
+# 🛠️ **일반적인 RAG 진행 과정**
 
 ```mermaid
 graph TD
