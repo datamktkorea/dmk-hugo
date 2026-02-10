@@ -11,3 +11,6 @@ title = 'DMK Tech Blog'
 
 [markup.goldmark.renderer]
   unsafe = true
+
+canonifyURLs = true
+enableRobotsTXT = true
