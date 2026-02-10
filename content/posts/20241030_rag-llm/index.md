@@ -4,6 +4,7 @@ date = 2024-10-30
 draft = false
 tags = ['RAG', 'LLM']
 image = '0_main.png'
+slug = 'rag-llm'
 +++
 
 # 👻 **기존 LLM의 문제점**
