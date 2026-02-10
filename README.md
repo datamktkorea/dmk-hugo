@@ -38,29 +38,48 @@ image = 'https://example.com/thumbnail.png'
 
 ```
 dmk-hugo/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml               # GitHub Pages 자동 배포 워크플로우
 ├── hugo.toml                        # Hugo 설정 파일
+│
+│   # 새 콘텐츠 생성 시 사용되는 기본 템플릿 모음
+├── archetypes/
+│   └── default.md                   # 새 포스트 생성 시 기본 템플릿
+│
+│   # 블로그 콘텐츠 (마크다운 파일)
 ├── content/
-│   └── posts/                       # 블로그 포스트 (마크다운)
+│   └── posts/                       # 블로그 포스트 모음
 │       └── rag-llm.md               # 포스트 예시
+│
+│   # Hugo 템플릿 파일 모음
 ├── layouts/
+│   ├── index.html                   # 홈페이지 (필터링/검색 JS 포함)
+│   │   
+│   │   # 기본 페이지 레이아웃
 │   ├── _default/
 │   │   ├── baseof.html              # 기본 HTML 레이아웃 (head, body, footer)
 │   │   ├── list.html                # 목록 페이지 템플릿 (태그별 목록 등)
 │   │   └── single.html              # 개별 포스트 페이지 템플릿
+│   │   
+│   │   # 마크다운 렌더링 커스텀 훅
 │   ├── _markup/
 │   │   └── render-codeblock-mermaid.html  # Mermaid 다이어그램 렌더링
-│   ├── partials/
-│   │   ├── header.html              # 상단 헤더 (로고, 검색, 다크모드 토글)
-│   │   ├── hero.html                # 메인 타이틀 섹션
-│   │   ├── filterbar.html           # 태그 필터 바
-│   │   └── blogcard.html            # 블로그 카드 컴포넌트
-│   └── index.html                   # 홈페이지 (필터링/검색 JS 포함)
-├── archetypes/
-│   └── default.md                   # 새 포스트 생성 시 기본 템플릿
+│   │   
+│   │   # 재사용 가능한 HTML 컴포넌트 조각
+│   └── partials/
+│       ├── header.html              # 상단 헤더 (로고, 검색, 다크모드 토글)
+│       ├── hero.html                # 메인 타이틀 섹션
+│       ├── filterbar.html           # 태그 필터 바
+│       └── blogcard.html            # 블로그 카드 컴포넌트
+│
+│   # 정적 파일 (빌드 시 그대로 복사됨)
 ├── static/
-│   └── images/
-│       └── dmk-logo.png             # 사이트 로고
-└── public/                          # 빌드 출력 (gitignore 대상)
+│   └── images/                      # 이미지 파일 모음
+│       └── dmk-logo.png             # 사이트 로고 및 파비콘
+│
+│   # 빌드 출력
+└── public/
 ```
 
 ## 각 파일 설명
