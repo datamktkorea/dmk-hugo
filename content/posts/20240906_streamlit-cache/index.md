@@ -3,7 +3,7 @@ title = 'Streamlit Cache 활용 방법'
 date = 2024-09-06
 draft = false
 tags = ['STREAMLIT']
-image = '0_main.png'
+image = 'https://miro.medium.com/v2/resize:fit:1400/1*9F4yTGOTrN2EwE_EVQWNmg.png'
 slug = 'streamlit-cache'
 +++
 
