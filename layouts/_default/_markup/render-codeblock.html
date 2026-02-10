@@ -2,6 +2,8 @@
 <pre class="mermaid">
   {{- .Inner | safeHTML -}}
 </pre>
+{{- else if .Type -}}
+{{ highlight .Inner .Type "" }}
 {{- else -}}
-<pre tabindex="0"{{ with .Attributes.class }} class="{{ . }}"{{ end }}><code{{ with .Type }} class="language-{{ . }}"{{ end }}>{{ .Inner | safeHTML }}</code></pre>
+<pre tabindex="0"><code>{{ .Inner | safeHTML }}</code></pre>
 {{- end -}}

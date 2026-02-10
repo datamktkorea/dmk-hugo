@@ -56,32 +56,59 @@
   aside p { margin: 0.25rem 0; }
   img.plain { border-radius: 0 !important; box-shadow: none !important; }
   .dark img.invertable { filter: invert(1) hue-rotate(180deg); }
-  /* plaintext 코드블럭 (class 없는 code) */
-  pre:not(.mermaid):has(> code:only-child:not([class])) {
+  /* 코드블럭 공통 스타일 */
+  pre:not(.mermaid),
+  .highlight pre {
     background: #f8f9fb !important;
     border: 1px solid #e2e6ea;
     border-radius: 0.75rem;
     padding: 1.25rem 1.5rem;
+    margin-bottom: 0;
   }
-  .dark pre:not(.mermaid):has(> code:only-child:not([class])) {
+  .dark pre:not(.mermaid),
+  .dark .highlight pre {
     background: #1e2736 !important;
     border-color: #2d3a4a;
   }
-  pre:not(.mermaid) > code:not([class]) {
+  .highlight { margin: 1.5rem 0; }
+  pre:not(.mermaid) > code,
+  .highlight pre code {
     color: #374151 !important;
     background: transparent !important;
     font-size: 0.875rem;
     line-height: 1.7;
+    display: block;
+    white-space: pre;
+    overflow-x: auto;
   }
-  .dark pre:not(.mermaid) > code:not([class]) {
+  .dark pre:not(.mermaid) > code,
+  .dark .highlight pre code {
     color: #d1d5db !important;
   }
+  /* 구문 강조 색상 (light) */
+  .chroma .k, .chroma .kn, .chroma .kd, .chroma .kc { color: #8b5cf6; }    /* keyword */
+  .chroma .nn, .chroma .nc { color: #2563eb; }                               /* module/class */
+  .chroma .nf, .chroma .fm { color: #059669; }                               /* function */
+  .chroma .s, .chroma .s1, .chroma .s2, .chroma .sa { color: #d97706; }     /* string */
+  .chroma .c, .chroma .c1, .chroma .ch, .chroma .cm { color: #9ca3af; font-style: italic; } /* comment */
+  .chroma .nb { color: #0891b2; }                                            /* builtin */
+  .chroma .mi, .chroma .mf { color: #e11d48; }                              /* number */
+  .chroma .nd { color: #8b5cf6; }                                            /* decorator */
+  .chroma .o, .chroma .p { color: #374151; }                                 /* operator/punctuation */
+  .chroma .n { color: #374151; }                                             /* name */
+  /* 구문 강조 색상 (dark) */
+  .dark .chroma .k, .dark .chroma .kn, .dark .chroma .kd, .dark .chroma .kc { color: #a78bfa; }
+  .dark .chroma .nn, .dark .chroma .nc { color: #60a5fa; }
+  .dark .chroma .nf, .dark .chroma .fm { color: #34d399; }
+  .dark .chroma .s, .dark .chroma .s1, .dark .chroma .s2, .dark .chroma .sa { color: #fbbf24; }
+  .dark .chroma .c, .dark .chroma .c1, .dark .chroma .ch, .dark .chroma .cm { color: #6b7280; }
+  .dark .chroma .nb { color: #22d3ee; }
+  .dark .chroma .mi, .dark .chroma .mf { color: #fb7185; }
+  .dark .chroma .nd { color: #a78bfa; }
+  .dark .chroma .o, .dark .chroma .p { color: #d1d5db; }
+  .dark .chroma .n { color: #d1d5db; }
   /* 코드블럭 마지막 빈 줄 제거 */
-  pre code { display: block; }
   pre code::after { display: none; }
-  pre:not(.mermaid) { margin-bottom: 0; }
-  pre:not(.mermaid) code { white-space: pre; overflow-x: auto; }
-  pre:not(.mermaid) code:not([class]) { padding-bottom: 0; }
   .mermaid { background: #f9fafb; border-radius: 0.75rem; padding: 1.5rem; margin: 1.5rem 0; text-align: center; }
   .dark .mermaid { background: #111827; }
 </style>
