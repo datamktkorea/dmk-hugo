@@ -1,14 +1,24 @@
-{{ $tags := .Site.Taxonomies.tags }}
+{{ $seen := slice }}
+{{ $uniqueTags := slice }}
+{{ range where .Site.RegularPages "Section" "posts" }}
+  {{ range .Params.tags }}
+    {{ $lower := lower . }}
+    {{ if not (in $seen $lower) }}
+      {{ $seen = $seen | append $lower }}
+      {{ $uniqueTags = $uniqueTags | append . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
   <div class="flex items-center gap-4">
     <div class="flex-1 overflow-x-auto no-scrollbar flex items-center gap-2 pb-2 scroll-smooth" id="filter-scroll">
-      <button onclick="filterByTag('all')" data-tag="all" class="tag-btn tag-active whitespace-nowrap px-4 py-2.5 rounded-md text-[15px] font-medium transition-all duration-200 border bg-primary border-primary text-white hover:bg-primary-hover shadow-sm">
+      <a href="{{ .Site.Home.RelPermalink }}" data-tag="all" class="tag-btn tag-active whitespace-nowrap px-4 py-2.5 rounded-md text-[15px] font-medium transition-all duration-200 border bg-primary border-primary text-white hover:bg-primary-hover shadow-sm no-underline">
         전체
-      </button>
-      {{ range $name, $taxonomy := $tags }}
-      <button onclick="filterByTag('{{ $name }}')" data-tag="{{ $name }}" class="tag-btn tag-inactive whitespace-nowrap px-4 py-2.5 rounded-md text-[15px] font-medium transition-all duration-200 border bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600">
-        {{ $name }}
-      </button>
+      </a>
+      {{ range $uniqueTags }}
+      <a href="{{ $.Site.Home.RelPermalink }}?tag={{ . }}" data-tag="{{ . }}" class="tag-btn tag-inactive whitespace-nowrap px-4 py-2.5 rounded-md text-[15px] font-medium transition-all duration-200 border bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600 no-underline">
+        {{ . }}
+      </a>
       {{ end }}
     </div>
     <div class="flex items-center pl-2 flex-shrink-0">

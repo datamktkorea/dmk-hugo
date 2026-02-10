@@ -25,6 +25,18 @@
   let currentTag = 'all';
   let currentSearch = '';
 
+  // URL ?tag= 파라미터로 태그 필터 자동 적용
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const tag = params.get('tag');
+    if (tag) {
+      currentTag = tag;
+      document.addEventListener('DOMContentLoaded', function() {
+        filterByTag(tag);
+      });
+    }
+  })();
+
   function toggleSearch() {
     const def = document.getElementById('header-default');
     const search = document.getElementById('header-search');
@@ -53,7 +65,7 @@
     currentTag = tag;
     // Update button styles
     document.querySelectorAll('.tag-btn').forEach(btn => {
-      if (btn.dataset.tag === tag) {
+      if (btn.dataset.tag.toLowerCase() === tag.toLowerCase()) {
         btn.className = 'tag-btn tag-active whitespace-nowrap px-4 py-2.5 rounded-md text-[15px] font-medium transition-all duration-200 border bg-primary border-primary text-white hover:bg-primary-hover shadow-sm';
       } else {
         btn.className = 'tag-btn tag-inactive whitespace-nowrap px-4 py-2.5 rounded-md text-[15px] font-medium transition-all duration-200 border bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600';

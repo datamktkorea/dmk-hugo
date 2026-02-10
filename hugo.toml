@@ -1,9 +1,9 @@
 baseURL = 'https://datamktkorea.github.io/dmk-tech-blog/'
 languageCode = 'ko-kr'
-title = 'DMK Tech Blog'
+title = 'DMK TECH BLOG'
 
 [params]
-  subtitle = '데이터마케팅코리아의 개발팀의 기록 일지'
+  subtitle = '데이터마케팅코리아 개발팀의 기록 일지'
   logoUrl = '/images/dmk-logo.png'
 
 [taxonomies]

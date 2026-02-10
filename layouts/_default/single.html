@@ -1,15 +1,9 @@
 {{ define "main" }}
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-20">
-  <!-- Back button -->
-  <a href="{{ .Site.BaseURL }}" class="mb-8 flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors no-underline">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-    <span class="text-sm font-medium">목록으로 돌아가기</span>
-  </a>
-
   <!-- Tags -->
   <div class="mb-4 flex flex-wrap gap-2">
     {{ range .Params.tags }}
-    <span class="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded">{{ . }}</span>
+    <a href="{{ $.Site.Home.RelPermalink }}?tag={{ . }}" class="inline-block bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded no-underline hover:bg-primary/20 transition-colors">{{ . }}</a>
     {{ end }}
   </div>
 
