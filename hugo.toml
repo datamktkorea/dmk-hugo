@@ -12,5 +12,9 @@ title = 'DMK TECH BLOG'
 [markup.goldmark.renderer]
   unsafe = true
 
+[markup.highlight]
+  noClasses = false
+
 canonifyURLs = true
+relativeURLs = true
 enableRobotsTXT = true
