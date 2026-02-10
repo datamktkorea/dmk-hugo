@@ -1,0 +1,7 @@
+{{- if eq .Type "mermaid" -}}
+<pre class="mermaid">
+  {{- .Inner | safeHTML -}}
+</pre>
+{{- else -}}
+<pre tabindex="0"{{ with .Attributes.class }} class="{{ . }}"{{ end }}><code{{ with .Type }} class="language-{{ . }}"{{ end }}>{{ .Inner | safeHTML }}</code></pre>
+{{- end -}}

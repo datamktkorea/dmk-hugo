@@ -68,11 +68,10 @@ graph TD
 ## **A) PREPARATION: 벡터 DB**
 
 1. **문서(PDF, DOCX 등) 준비**
-    
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/62040e10-4c5e-488e-8bd5-23901ff8a6b2/f59a579d-f0f0-4917-b033-9a2c1cedc5ab/image.png)
+
+    <img src="1_pdf_example.png" class="plain" style="max-width: 250px; width: 100%;">
     
 2. **문서에서 텍스트 추출**
-    
     ```
     데엔팀에는 4명의 팀원이 있다. 빈센트는 데엔팀이다. 데컨팀에는 1명의 인턴이 있다. 티나는 데컨팀의 인턴이다.
     ```
@@ -85,17 +84,16 @@ graph TD
     데컨팀에는 1명의 인턴이 있다. /
     티나는 데컨팀의 인턴이다.
     ```
-    
 
-1. **임베딩 = 텍스트 벡터화**
+4. **임베딩 = 텍스트 벡터화**
     
-    ![실제로는 훨씬 더 고차원 형태로 벡터화됨](https://prod-files-secure.s3.us-west-2.amazonaws.com/62040e10-4c5e-488e-8bd5-23901ff8a6b2/e47c55d4-c785-43be-adef-ca0dc2fe0a94/image.png)
+     <img src="2_embedding_example.png" class="plain invertable" style="max-width: 400px; width: 100%;">
     
     실제로는 훨씬 더 고차원 형태로 벡터화됨
     
-2. **벡터 DB에 저장**
+5. **벡터 DB에 저장**
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/62040e10-4c5e-488e-8bd5-23901ff8a6b2/5bc45a69-dd09-443c-9de5-82821bc013f0/image.png)
+    <img src="3_vectordb_example.png" class="plain" style="max-width: 250px; width: 100%;">
     
 
 ## **B) RETRIEVAL: 검색**
@@ -108,7 +106,7 @@ graph TD
     
 2. **사용자 질문을 벡터 DB에서 검색**
     
-    ![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/62040e10-4c5e-488e-8bd5-23901ff8a6b2/2697e7e4-ea4a-4394-bd3d-ca9319dcce96/image.png)
+     <img src="4_vectordb_search.png" class="plain invertable" style="max-width: 400px; width: 100%;">
     
 3. **연관된 문서 반환**
     

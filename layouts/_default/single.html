@@ -21,7 +21,7 @@
   {{ end }}
 
   <!-- Content -->
-  <div class="mt-10 prose-sm dark:prose-invert max-w-none
+  <div class="mt-10 prose prose-sm dark:prose-invert max-w-none
     prose-headings:text-gray-900 dark:prose-headings:text-gray-100 prose-headings:font-bold
     prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed
     prose-a:text-primary prose-a:no-underline hover:prose-a:underline
@@ -50,6 +50,34 @@
     background: #1a2332;
   }
   aside p { margin: 0.25rem 0; }
+  img.plain { border-radius: 0 !important; box-shadow: none !important; }
+  .dark img.invertable { filter: invert(1) hue-rotate(180deg); }
+  /* plaintext 코드블럭 (class 없는 code) */
+  pre:not(.mermaid):has(> code:only-child:not([class])) {
+    background: #f8f9fb !important;
+    border: 1px solid #e2e6ea;
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+  }
+  .dark pre:not(.mermaid):has(> code:only-child:not([class])) {
+    background: #1e2736 !important;
+    border-color: #2d3a4a;
+  }
+  pre:not(.mermaid) > code:not([class]) {
+    color: #374151 !important;
+    background: transparent !important;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+  .dark pre:not(.mermaid) > code:not([class]) {
+    color: #d1d5db !important;
+  }
+  /* 코드블럭 마지막 빈 줄 제거 */
+  pre code { display: block; }
+  pre code::after { display: none; }
+  pre:not(.mermaid) { margin-bottom: 0; }
+  pre:not(.mermaid) code { white-space: pre; overflow-x: auto; }
+  pre:not(.mermaid) code:not([class]) { padding-bottom: 0; }
   .mermaid { background: #f9fafb; border-radius: 0.75rem; padding: 1.5rem; margin: 1.5rem 0; text-align: center; }
   .dark .mermaid { background: #111827; }
 </style>
