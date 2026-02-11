@@ -95,7 +95,7 @@ dmk-hugo/
 
 | 파일 | 설명 |
 |------|------|
-| `_default/baseof.html` | 모든 페이지의 기본 골격. Tailwind CSS CDN, Noto Sans KR 폰트, 다크모드 설정, Mermaid 스크립트를 포함 |
+| `_default/baseof.html` | 모든 페이지의 기본 골격. Tailwind CSS CDN, Noto Sans KR 폰트, 다크모드 설정, Mermaid 스크립트를 포함. 홈페이지와 포스트 페이지의 배경을 구분 |
 | `_default/single.html` | 개별 포스트 상세 페이지. 뒤로가기 버튼, 태그 배지, 본문 렌더링, `<aside>` 스타일, Mermaid 다이어그램 지원 |
 | `_default/list.html` | 태그별 포스트 목록 페이지 |
 | `index.html` | 홈페이지. Hero, FilterBar, BlogCard를 조합하고 태그 필터링/검색 기능의 JavaScript 포함 |
@@ -106,7 +106,7 @@ dmk-hugo/
 | 파일 | 설명 |
 |------|------|
 | `header.html` | 상단 고정 헤더. 로고, 사이트명, 다크모드 토글(해/달 아이콘), 검색 토글 포함 |
-| `hero.html` | 사이트 제목과 서브타이틀을 표시하는 히어로 섹션 |
+| `hero.html` | 사이트 제목과 서브타이틀을 표시하는 히어로 섹션. 블루 그라데이션 배경 위에 Memphis 스타일의 기하학적 스크리블 패턴(플러스 스파클, 지그재그, 점선 버블, 물결선 등) SVG를 타일링하여 장식 |
 | `filterbar.html` | 태그 기반 필터 버튼을 가로 스크롤로 표시. Hugo taxonomy에서 자동 생성 |
 | `blogcard.html` | 개별 포스트를 카드 형태로 표시. 썸네일, 태그 배지, 제목, 날짜 포함 |
 
