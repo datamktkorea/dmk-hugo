@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="nFyD2vU0u2OPzMafwogUzd7hI4NCYbUpfmreBBVelFM" />
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+  <!-- SEO Meta Tags -->
+  {{ if .IsHome }}
+  <meta name="description" content="데이터마케팅코리 기술 블로그">
+  <meta name="keywords" content="데이터마케팅코리아, 데마코, DataMarketingKorea, DMK, datamktkorea, 기술블로그, 테크블로그, tech blog, 개발 블로그">
+  {{ else }}
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+  <meta name="keywords" content="{{ delimit .Params.tags ", " }}">
+  {{ end }}
+  <link rel="canonical" href="{{ .Permalink }}">
+
   <link rel="icon" type="image/png" href="{{ "images/dmk-logo.png" | relURL }}">
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">

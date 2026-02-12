@@ -5,6 +5,7 @@ draft = false
 tags = ['RAG', 'LLM']
 image = 'https://www.hyro.ai/wp-content/uploads/2023/07/RAG.png'
 slug = 'rag-llm'
+description = 'LLM의 할루시네이션 문제를 해결하는 RAG(Retrieval Augmented Generation)의 개념, 이점, 그리고 벡터 DB를 활용한 일반적인 RAG 구현 과정을 설명합니다.'
 +++
 
 # 👻 **기존 LLM의 문제점**

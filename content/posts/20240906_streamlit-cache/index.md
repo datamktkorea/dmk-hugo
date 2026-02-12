@@ -5,6 +5,7 @@ draft = false
 tags = ['STREAMLIT']
 image = 'https://miro.medium.com/v2/resize:fit:1400/1*9F4yTGOTrN2EwE_EVQWNmg.png'
 slug = 'streamlit-cache'
+description = 'Streamlit의 st.cache_data와 st.cache_resource 사용법, TTL과 max_entries 설정으로 서버 메모리 부족 문제를 해결하는 캐시 최적화 방법을 공유합니다.'
 +++
 
 - 참고문서
