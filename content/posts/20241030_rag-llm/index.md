@@ -2,6 +2,7 @@
 title = '기존 LLM의 문제점과 RAG(Retrieval Augmented Generation)'
 date = 2024-10-30
 draft = false
+author = ['박성연(Layla)']
 tags = ['RAG', 'LLM']
 image = 'https://www.hyro.ai/wp-content/uploads/2023/07/RAG.png'
 slug = 'rag-llm'
