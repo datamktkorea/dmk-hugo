@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Pre-commit hook: validate front matter (author & tags)
+
+bash "$(git rev-parse --show-toplevel)/scripts/validate-frontmatter.sh"

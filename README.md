@@ -122,6 +122,28 @@ dmk-hugo/
 |------|------|
 | `images/dmk-logo.png` | 헤더에 표시되는 사이트 로고 |
 
+## Front Matter 검증
+
+포스트의 `author`와 `tags` 값은 허용 목록으로 관리됩니다.
+
+- **허용 작성자**: `data/authors.yml`
+- **허용 태그**: `data/tags.yml`
+
+커밋 시 pre-commit hook이 자동으로 검증하며, 허용되지 않은 값이 있으면 커밋이 차단됩니다. GitHub Actions 배포 워크플로우에서도 동일한 검증이 실행됩니다.
+
+### 로컬 hook 설정
+
+처음 클론한 경우 pre-commit hook을 수동으로 설정해야 합니다:
+
+```bash
+cp scripts/pre-commit .git/hooks/pre-commit
+chmod +x .git/hooks/pre-commit
+```
+
+### 새 작성자 / 태그 추가
+
+`data/authors.yml` 또는 `data/tags.yml`에 항목을 추가하면 됩니다.
+
 ## 기능
 
 - **태그 필터링** — 포스트의 `tags`를 기준으로 홈 화면에서 필터링
