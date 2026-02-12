@@ -46,5 +46,6 @@
       html.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     }
+    window.dispatchEvent(new Event('themeChanged'));
   }
 </script>
