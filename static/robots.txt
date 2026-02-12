@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://datamktkorea.github.io/dmk-tech-blog/sitemap.xml
