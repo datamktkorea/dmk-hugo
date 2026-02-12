@@ -17,4 +17,4 @@ title = 'DMK TECH BLOG'
 
 canonifyURLs = true
 relativeURLs = true
-enableRobotsTXT = true
+enableRobotsTXT = false
