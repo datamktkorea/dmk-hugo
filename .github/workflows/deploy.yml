@@ -53,6 +53,10 @@ jobs:
         # GitHub Pages 환경 설정
         # 이후 steps.pages.outputs.base_url 로 Pages URL 참조 가능
 
+      - name: Validate front matter
+        run: bash scripts/validate-frontmatter.sh
+        # author, tags 값이 허용 목록(data/authors.yml, data/tags.yml)에 있는지 검증
+
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
