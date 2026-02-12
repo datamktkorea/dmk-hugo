@@ -90,11 +90,12 @@
 
     cards.forEach(card => {
       const tags = card.dataset.tags.toLowerCase().split(',');
-      const title = card.dataset.title.toLowerCase();
-      const content = card.dataset.content.toLowerCase();
+      const title = card.dataset.title.toLowerCase().replace(/\s/g, '');
+      const content = card.dataset.content.toLowerCase().replace(/\s/g, '');
+      const query = currentSearch.replace(/\s/g, '');
 
       let tagMatch = currentTag === 'all' || tags.includes(currentTag.toLowerCase());
-      let searchMatch = !currentSearch || title.includes(currentSearch) || content.includes(currentSearch);
+      let searchMatch = !query || title.includes(query) || content.includes(query);
 
       if (tagMatch && searchMatch) {
         card.style.display = '';
