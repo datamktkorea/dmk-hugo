@@ -11,9 +11,11 @@
   <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4 leading-tight">{{ .Title }}</h1>
 
   <!-- Date & Author -->
+  {{ if or (not .Date.IsZero) .Params.author }}
   <div class="text-gray-400 dark:text-gray-500 text-sm">
-    <time>{{ .Date.Format "2006년 01월 02일" }}</time>{{ with .Params.author }} │ {{ delimit . " · " }}{{ end }}
+    {{ if not .Date.IsZero }}<time>{{ .Date.Format "2006년 01월 02일" }}</time>{{ end }}{{ with .Params.author }}{{ if not $.Date.IsZero }} │ {{ end }}{{ delimit . " · " }}{{ end }}
   </div>
+  {{ end }}
 
   <!-- Featured image -->
   {{ with .Resources.GetMatch .Params.image }}
